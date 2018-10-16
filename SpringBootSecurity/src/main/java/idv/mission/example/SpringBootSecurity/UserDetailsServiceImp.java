@@ -29,7 +29,11 @@ public class UserDetailsServiceImp implements UserDetailsService {
         Account account = accountService.findByUsername(username);
         Authority authority = authorityService.findByUsername(username);
         String role = authority.getRole();
+        System.out.println("accountService = " + accountService);
+        System.out.println("authorityService = " + authorityService);
+        System.out.println("role = " + role);
         role = role.substring(role.indexOf("_") + 1, role.length()); // "ROLE_USER" -> "USER"
+        System.out.println(role);
         UserBuilder builder = null;
         if( account != null ) {
             builder = User.withUsername(username);
